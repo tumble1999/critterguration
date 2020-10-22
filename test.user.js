@@ -1,10 +1,9 @@
 // ==UserScript==
-// @name        Test
-// @namespace    http://boxcrittersmods.ga/
+// @name         Test
+// @namespace    https://boxcrittersmods.ga/authors/tumblegamer/
 // @version      n/a
-// @description  A great extension that lets you easily switch between, add and create new themes to use on Box Critters!
+// @description  Critterguration test
 // @author       TumbleGamer
-// @logo         https://raw.githubusercontent.com/boxcrittersmods/bc-texture-pack-manager/master/logo.png
 // @match        https://boxcritters.com/play/
 // @match        https://boxcritters.com/play/?*
 // @match        https://boxcritters.com/play/#*
@@ -12,7 +11,7 @@
 // @match        https://boxcritters.com/play/index.html?*
 // @match        https://boxcritters.com/play/index.html#*
 // @require      https://github.com/tumble1999/popper/raw/master/popper.js
-// @require      file:///E:/dev/boxcritters/mods/critterguration/critterguration.js
+// @require      https://github.com/tumble1999/critterguration/raw/master/critterguration.js
 // @run-at       document-start
 // @grant        none
 // ==/UserScript==
@@ -44,7 +43,7 @@
 			{ value: "5", text: "Saturday" },
 			{ value: "6", text: "Sunday" }
 		],
-		value => value == new Date().getDay(),//Select the current day
+		value => value == new Date().getDay(), // Select the current day
 		value => {
 			console.log("The day is", value.text);
 		});
@@ -54,5 +53,4 @@
 	hmmContainer.innerText = "Welcome to Hmm World";
 
 	Critterguration.openSettings();
-
 })();
