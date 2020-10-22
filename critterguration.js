@@ -61,8 +61,8 @@
 
 	//OpenSettings (tabId?)
 	function openSettings(tabId) {
-		activeTab(tabId || tabContainer.querySelector(".active"));
 		modal.show();
+		activeTab(tabId || tabContainer.querySelector(".active"));
 	}
 
 	function createDropdown(container, name, options, shouldSelect, onchange) {
