@@ -10,7 +10,7 @@
 // @match        https://boxcritters.com/play/index.html
 // @match        https://boxcritters.com/play/index.html?*
 // @match        https://boxcritters.com/play/index.html#*
-// @require      https://github.com/tumble1999/popper/raw/master/popper.js
+// @require      https://github.com/tumble1999/modial/raw/master/modial.js
 // @require      https://github.com/tumble1999/critterguration/raw/master/critterguration.user.js
 // @run-at       document-start
 // @grant        none

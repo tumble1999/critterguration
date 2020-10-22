@@ -4,7 +4,7 @@
 // @version      0.0.22.22
 // @icon        https://github.com/tumble1999/critterguration/raw/master/logo.png
 // @author       TumbleGamer
-// @require      https://github.com/tumble1999/popper/raw/master/popper.js
+// @require      https://github.com/tumble1999/modial/raw/master/modial.js
 // @match        https://boxcritters.com/play/
 // @match        https://boxcritters.com/play/?*
 // @match        https://boxcritters.com/play/#*
@@ -17,17 +17,17 @@
 (function () {
 	"use strict";
 
-	if (typeof Popper == 'undefined') throw `@require https://github.com/tumble1999/popper/raw/master/popper.js`;
+	if (typeof Modial == 'undefined') throw `@require https://github.com/tumble1999/modial/raw/master/modial.js`;
 
 	const uWindow = typeof unsafeWindow != 'undefined' ? unsafeWindow : window;
 
 	if (uWindow.Critterguration)
 		return;
 
-	let modal = new Popper();
+	let modal = new Modial();
 	modal.setWidth("1000px");
 	modal.setContent(
-		`<span>Mod Settings</span>${Popper.closeButton}`,
+		`<span>Mod Settings</span>${Modial.closeButton}`,
 		``,
 		`<small style="font-size: 0.8em">
 			Mod Settings powered by
