@@ -1,8 +1,13 @@
-let Critterguration;
 (function () {
 	"use strict";
 
 	if (typeof Popper == 'undefined') throw `@require https://github.com/tumble1999/popper/raw/master/popper.js`;
+
+	const uWindow = typeof unsafeWindow != 'undefined' ? unsafeWindow : window;
+
+	if (uWindow.Critterguration) {
+		return;
+	}
 
 	let modal = new Popper();
 	modal.setWidth("1000px");
@@ -133,7 +138,7 @@ let Critterguration;
 	}
 
 
-	Critterguration = {
+	uWindow.Critterguration = {
 		openSettings,
 		registerSettingsMenu,
 		createInputGroup: createInputRow
