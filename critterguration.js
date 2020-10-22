@@ -35,7 +35,7 @@
 		if (activeContent) activeContent.classList.remove("active");
 		element.classList.add("active");
 		contentElement.classList.add("active");
-		element.ontab();
+		if (modal.showing()) element.ontab();
 	}
 
 	//Create Tab
@@ -130,7 +130,7 @@
 		tabContainer.appendChild(tab);
 		contentContainer.appendChild(content);
 		tab.ontab = ontab;
-		tab.addEventListener("click", (_ => activeTab(tab)));
+		tab.addEventListener("click", _ => activeTab(tab));
 		if (tabContainer.children.length == 1) activeTab(tab);
 		content.createInputRow = (name) => createInputRow(content, name);
 		setupCreationFunctions(content, true);
