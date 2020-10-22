@@ -5,7 +5,7 @@
 // @require      https://github.com/tumble1999/popper/raw/master/popper.js
 // @require      file:///E:/dev/boxcritters/mods/critterguration/critterguration.js
 ```
-![screenshot][screenshot.png]
+![screenshot](screenshot.png)
 ## Usage
 ```js
 let settingContainer = Critterguration.registerSettingsMenu({ id: "test", name: "Test" });
