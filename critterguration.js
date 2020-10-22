@@ -119,23 +119,23 @@ let Critterguration;
 		return group;
 	}
 
-	function registerSettingsMenu({ id, name }, ontab = _ => 0 {
+	function registerSettingsMenu({ id, name }, ontab = _ => 0) {
 		let tab = createTab(id, name);
 		let content = createContentBox(id);
 		tabContainer.appendChild(tab);
-	contentContainer.appendChild(content);
-	tab.ontab = ontab;
-	tab.addEventListener("click", (_ => activeTab(tab)));
-	if (tabContainer.children.length == 1) activeTab(tab);
-	content.createInputRow = (name) => createInputRow(content, name);
-	setupCreationFunctions(content, true);
-	return content;
-}
+		contentContainer.appendChild(content);
+		tab.ontab = ontab;
+		tab.addEventListener("click", (_ => activeTab(tab)));
+		if (tabContainer.children.length == 1) activeTab(tab);
+		content.createInputRow = (name) => createInputRow(content, name);
+		setupCreationFunctions(content, true);
+		return content;
+	}
 
 
 	Critterguration = {
-	openSettings,
-	registerSettingsMenu,
-	createInputGroup: createInputRow
-};
-}) ();
+		openSettings,
+		registerSettingsMenu,
+		createInputGroup: createInputRow
+	};
+})();
