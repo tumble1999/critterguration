@@ -18,6 +18,7 @@
 	let tabContainer = document.createElement("div");
 	tabContainer.classList.add("nav", "nav-pills", "justify-content-center");
 	modal.getHeaderNode().appendChild(tabContainer);
+	tabContainer.style.display = "none";
 
 	//Create Content Area
 	//<div class="tab-content"></div>
@@ -131,6 +132,7 @@
 		contentContainer.appendChild(content);
 		tab.ontab = ontab;
 		tab.addEventListener("click", _ => activeTab(tab));
+		f(tabContainer.children.length > 1) tabContainer.style.display = "flex";
 		if (tabContainer.children.length == 1) setTimeout(_ => activeTab(tab), 0);
 		content.createInputRow = (name) => createInputRow(content, name);
 		setupCreationFunctions(content, true);
