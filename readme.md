@@ -17,6 +17,6 @@ let settingContainer = Critterguration.registerSettingsMenu({ id: "test", name: 
 	
 
 	let nameGroup = settingContainer.createInputRow("Name");
-	nameGroup.createInput("text");
-	nameGroup.createInput("text");
+	nameGroup.createInput("FirstName", "text");
+	nameGroup.createInput("Second Name", "text");
 ```

@@ -58,8 +58,9 @@ let Critterguration;
 		modal.show();
 	}
 
-	function createInput(type, container, oninput = _ => 0) {
+	function createInput(placeholder, type, container, oninput = _ => 0) {
 		let input = document.createElement("input");
+		input.placeholder = placeholder;
 		input.classList.add("form-control");
 		input.type = type;
 		input.oninput = () => oninput(input.value, input);
@@ -81,7 +82,7 @@ let Critterguration;
 		prepend.appendChild(title);
 		container.appendChild(group);
 
-		group.createInput = (type, oninput) => createInput(type, group, oninput);
+		group.createInput = (placeholder, type, oninput) => createInput(placeholder, type, group, oninput);
 
 		return group;
 	}
@@ -96,7 +97,7 @@ let Critterguration;
 		content.createInputRow = (name) => createInputRow(name, content);
 		content.createInput = (name, type, oninput) => {
 			let group = content.createInputRow(name);
-			return group.createInput(type, oninput);
+			return group.createInput(name, type, oninput);
 		};
 		return content;
 	}
