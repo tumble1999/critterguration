@@ -13,7 +13,7 @@
 // @match        https://boxcritters.com/play/index.html#*
 // @require      https://github.com/tumble1999/popper/raw/master/popper.js
 // @require      file:///E:/dev/boxcritters/mods/critterguration/critterguration.js
-// @run-at       document-end
+// @run-at       document-start
 // @grant        none
 // ==/UserScript==
 
@@ -21,6 +21,21 @@
 	'use strict';
 	console.log(Critterguration);
 
-	Critterguration.modal.show();
+	let settingContainer = Critterguration.registerSettingsMenu({ id: "test", name: "Test" });
+	settingContainer.innerText = "Welcome to the test settings page!";
+
+	settingContainer.createInput("Yes", "text", (value) => {
+		console.log("You said", value);
+	});
+
+	let nameGroup = settingContainer.createInputRow("Name");
+	nameGroup.createInput("text");
+	nameGroup.createInput("text");
+
+
+	let hmmContainer = Critterguration.registerSettingsMenu({ id: "hmm", name: "HMM" });
+	hmmContainer.innerText = "Welcome to Hmm World";
+
+	Critterguration.openSettings();
 
 })();
