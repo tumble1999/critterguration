@@ -21,7 +21,9 @@
 	'use strict';
 	console.log(Critterguration);
 
-	let settingContainer = Critterguration.registerSettingsMenu({ id: "test", name: "Test" });
+	let settingContainer = Critterguration.registerSettingsMenu({ id: "test", name: "Test" }, () => {
+		console.log("this happens when the tab is opened");
+	});
 	settingContainer.innerText = "Welcome to the test settings page!";
 
 	settingContainer.createInput("Yes", "text", (value) => {

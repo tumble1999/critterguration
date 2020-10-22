@@ -30,6 +30,7 @@ let Critterguration;
 		if (activeContent) activeContent.classList.remove("active");
 		element.classList.add("active");
 		contentElement.classList.add("active");
+		element.ontab();
 	}
 
 	//Create Tab
@@ -58,7 +59,7 @@ let Critterguration;
 		modal.show();
 	}
 
-	function createDropdown(container, name, options, shouldSelect, onchange,) {
+	function createDropdown(container, name, options, shouldSelect, onchange) {
 		let input = document.createElement("select");
 		input.placeholder = name;
 		input.classList.add("custom-select");
@@ -118,22 +119,23 @@ let Critterguration;
 		return group;
 	}
 
-	function registerSettingsMenu({ id, name }) {
+	function registerSettingsMenu({ id, name }, ontab = _ => 0 {
 		let tab = createTab(id, name);
 		let content = createContentBox(id);
 		tabContainer.appendChild(tab);
-		contentContainer.appendChild(content);
-		tab.addEventListener("click", (_ => activeTab(tab)));
-		if (tabContainer.children.length == 1) activeTab(tab);
-		content.createInputRow = (name) => createInputRow(content, name);
-		setupCreationFunctions(content, true);
-		return content;
-	}
+	contentContainer.appendChild(content);
+	tab.ontab = ontab;
+	tab.addEventListener("click", (_ => activeTab(tab)));
+	if (tabContainer.children.length == 1) activeTab(tab);
+	content.createInputRow = (name) => createInputRow(content, name);
+	setupCreationFunctions(content, true);
+	return content;
+}
 
 
 	Critterguration = {
-		openSettings,
-		registerSettingsMenu,
-		createInputGroup: createInputRow
-	};
-})();
+	openSettings,
+	registerSettingsMenu,
+	createInputGroup: createInputRow
+};
+}) ();
