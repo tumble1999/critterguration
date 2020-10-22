@@ -131,7 +131,7 @@
 		contentContainer.appendChild(content);
 		tab.ontab = ontab;
 		tab.addEventListener("click", _ => activeTab(tab));
-		if (tabContainer.children.length == 1) activeTab(tab);
+		if (tabContainer.children.length == 1) setTimeout(_ => activeTab(tab), 0);
 		content.createInputRow = (name) => createInputRow(content, name);
 		setupCreationFunctions(content, true);
 		return content;
