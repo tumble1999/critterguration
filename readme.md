@@ -3,7 +3,7 @@
 ## Install
 ```js
 // @require      https://github.com/tumble1999/popper/raw/master/popper.js
-// @require      https://github.com/tumble1999/critterguration/raw/master/critterguration.js
+// @require      https://github.com/tumble1999/critterguration/raw/master/critterguration.user.js
 ```
 ![screenshot](screenshot.png)
 ## Usage
