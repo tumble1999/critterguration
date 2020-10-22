@@ -1,6 +1,6 @@
 # Critterguration
 
-##Install
+## Install
 ```js
 // @require      https://github.com/tumble1999/popper/raw/master/popper.js
 // @require      file:///E:/dev/boxcritters/mods/critterguration/critterguration.js
