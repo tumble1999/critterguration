@@ -60,7 +60,7 @@
 
 	//OpenSettings (tabId?)
 	function openSettings(tabId) {
-		if (tabId) activeTab(tabId);
+		activeTab(tabId || tabContainer.querySelector(".active"));
 		modal.show();
 	}
 
