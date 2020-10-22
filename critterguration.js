@@ -132,7 +132,7 @@
 		contentContainer.appendChild(content);
 		tab.ontab = ontab;
 		tab.addEventListener("click", _ => activeTab(tab));
-		f(tabContainer.children.length > 1) tabContainer.style.display = "flex";
+		if (tabContainer.children.length > 1) tabContainer.style.display = "flex";
 		if (tabContainer.children.length == 1) setTimeout(_ => activeTab(tab), 0);
 		content.createInputRow = (name) => createInputRow(content, name);
 		setupCreationFunctions(content, true);
