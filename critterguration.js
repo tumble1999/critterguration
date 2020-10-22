@@ -141,6 +141,7 @@
 	uWindow.Critterguration = {
 		openSettings,
 		registerSettingsMenu,
-		createInputGroup: createInputRow
+		createInputGroup: createInputRow,
+		isOpen: modal.showing
 	};
 })();
