@@ -58,18 +58,49 @@ let Critterguration;
 		modal.show();
 	}
 
-	function createInput(placeholder, type, container, oninput = _ => 0) {
+	function createDropdown(container, name, options, shouldSelect, onchange,) {
+		let input = document.createElement("select");
+		input.placeholder = name;
+		input.classList.add("custom-select");
+		for (let option of options) {
+			let optionElement = document.createElement("option");
+			optionElement.value = option.value;
+			optionElement.innerText = option.text;
+			optionElement.style.whiteSpace = "none";
+			if (shouldSelect(option.value)) optionElement.selected = true;
+			input.appendChild(optionElement);
+		}
+		input.onchange = () => onchange(options[input.selectedOptions[0].value], input);
+		container.appendChild(input);
+		return input;
+
+	}
+
+	function createInput(container, name, type, oninput = _ => 0) {
 		let input = document.createElement("input");
-		input.placeholder = placeholder;
+		input.placeholder = name;
 		input.classList.add("form-control");
 		input.type = type;
 		input.oninput = () => oninput(input.value, input);
 		container.appendChild(input);
 		return input;
 	}
+	var creationFunctions = {
+		createInput,
+		createDropdown
+	};
+	var setupCreationFunctions = (container, norow) => {
+		for (let func in creationFunctions) {
+			container[func] = (...p) => {
+				let row;
+				if (norow) row = container.createInputRow(p[0]);
+				return creationFunctions[func](norow ? row : container, ...p);
+			};
+		}
+	};
 
 
-	function createInputRow(name, container) {
+	function createInputRow(container, name) {
 		let group = document.createElement("div");
 		group.classList.add("input-group");
 
@@ -82,7 +113,7 @@ let Critterguration;
 		prepend.appendChild(title);
 		container.appendChild(group);
 
-		group.createInput = (placeholder, type, oninput) => createInput(placeholder, type, group, oninput);
+		setupCreationFunctions(group);
 
 		return group;
 	}
@@ -94,11 +125,8 @@ let Critterguration;
 		contentContainer.appendChild(content);
 		tab.addEventListener("click", (_ => activeTab(tab)));
 		if (tabContainer.children.length == 1) activeTab(tab);
-		content.createInputRow = (name) => createInputRow(name, content);
-		content.createInput = (name, type, oninput) => {
-			let group = content.createInputRow(name);
-			return group.createInput(name, type, oninput);
-		};
+		content.createInputRow = (name) => createInputRow(content, name);
+		setupCreationFunctions(content, true);
 		return content;
 	}
 

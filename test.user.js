@@ -32,6 +32,21 @@
 	nameGroup.createInput("FirstName", "text");
 	nameGroup.createInput("Second Name", "text");
 
+	settingContainer.createDropdown("Day",
+		[
+			{ value: "0", text: "Monday" },
+			{ value: "1", text: "Teusday" },
+			{ value: "2", text: "Wednesday" },
+			{ value: "3", text: "Thursday" },
+			{ value: "4", text: "Friday" },
+			{ value: "5", text: "Saturday" },
+			{ value: "6", text: "Sunday" }
+		],
+		value => value == new Date().getDay(),//Select the current day
+		value => {
+			console.log("The day is", value.text);
+		});
+
 
 	let hmmContainer = Critterguration.registerSettingsMenu({ id: "hmm", name: "HMM" });
 	hmmContainer.innerText = "Welcome to Hmm World";
