@@ -109,7 +109,7 @@
 			if (shouldSelect(option.value)) optionElement.selected = true;
 			input.appendChild(optionElement);
 		}
-		input.onchange = () => onchange(options[input.selectedOptions[0].value], input);
+		input.onchange = () => onchange(options[input.selectedIndex].value, input);
 		container.appendChild(input);
 		return input;
 	}
