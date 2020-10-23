@@ -21,19 +21,25 @@
 	'use strict';
 	console.log(Critterguration);
 
+	//returns html elemet you can use append child to to add elements yourself
 	let settingContainer = Critterguration.registerSettingsMenu({ id: "test", name: "Test" }, () => {
 		console.log("this happens when the tab is opened");
 	});
 	settingContainer.innerText = "Welcome to the test settings page!";
 
+	//returns html elemet representing the input elememt
 	settingContainer.createInput("Yes", "text", (value) => {
 		console.log("You said", value);
 	});
 
+	//returns html element representing the div
 	let nameGroup = settingContainer.createInputRow("Name");
+
+	//returns html elemet representing the input elememt
 	nameGroup.createInput("FirstName", "text");
 	nameGroup.createInput("Second Name", "text");
 
+	//returns html element representing the select elememt
 	settingContainer.createDropdown("Day",
 		[
 			{ value: "0", text: "Monday" },
@@ -49,7 +55,10 @@
 			console.log("The day is", value.text);
 		});
 
+	// this one also retunes a html element
 	let testList = settingContainer.createListGroup("Bob");
+
+	//and so do these
 	testList.addItem("Title", "warning", "Description", "Footer", "Corner", "Badge", () => {
 		console.log("This one is the test one");
 	}, true);
