@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Critterguration
 // @namespace    https://boxcrittersmods.ga/authors/tumblegamer/
-// @version      0.2.0.26
-// @icon         https://github.com/tumble1999/critterguration/raw/master/logo.png
+// @version      0.2.1.27
+// @icon         https://github.com/tumble1999/critterguration/raw/master/icon.png
 // @author       TumbleGamer
 // @require      https://github.com/tumble1999/mod-utils/raw/master/mod-utils.js
 // @require      https://github.com/SArpnt/ctrl-panel/raw/master/script.user.js
