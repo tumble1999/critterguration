@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Critterguration
 // @namespace    https://boxcrittersmods.ga/authors/tumblegamer/
-// @version      0.2.1.27
+// @version      0.3.0.28
 // @icon         https://github.com/tumble1999/critterguration/raw/master/icon.png
 // @author       TumbleGamer
 // @require      https://github.com/tumble1999/mod-utils/raw/master/mod-utils.js
@@ -244,12 +244,19 @@
 		let settingsMacro;
 		if (uWindow.BCMacros) {
 			//Create Settigs Macro
-			let macroPack = BCMacros.createMacroPack("Critterguration");
-			settingsMacro = macroPack.createMacro({
-				name: "Mod Settings",
-				action: () => openSettings(),
-				button: options
-			});
+			// let macroPack = BCMacros.createMacroPack("Critterguration");
+			// settingsMacro = macroPack.createMacro({
+			// 	name: "Mod Settings",
+			// 	action: () => openSettings(),
+			// 	button: options
+			// });
+
+			// Attach settiongs to the existing  unused settings button
+			console.log(uWindow.BCMacros);
+
+			setTimeout(() => {
+				BCMacros.macros.find(m => m.name == "misc").setAction(() => openSettings());
+			}, 1000);
 		}
 		if (!uWindow.BCMacros || settingsMacro.inaccessible()) {
 			//Create Button
