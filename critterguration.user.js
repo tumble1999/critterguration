@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Critterguration
 // @namespace    https://bcmc.ga/authors/tumblegamer/
-// @version      0.3.1.29
+// @version      0.3.2.30
 // @icon         https://github.com/tumble1999/critterguration/raw/master/icon.png
 // @author       TumbleGamer
 // @require      https://github.com/tumble1999/mod-utils/raw/master/mod-utils.js
@@ -258,7 +258,7 @@
 				BCMacros.macros.find(m => m.name == "misc").setAction(() => openSettings());
 			}, 1000);
 		}
-		if (!uWindow.BCMacros || settingsMacro.inaccessible()) {
+		if (!uWindow.BCMacros) {
 			//Create Button
 			//let button = ctrlPanel.addButton(...Object.values(options));
 			//button.addEventListener("click", () => openSettings());
