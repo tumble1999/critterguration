@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Critterguration
 // @namespace    https://boxcrittersmods.ga/authors/tumblegamer/
-// @version      0.3.0.28
+// @version      0.3.1.29
 // @icon         https://github.com/tumble1999/critterguration/raw/master/icon.png
 // @author       TumbleGamer
 // @require      https://github.com/tumble1999/mod-utils/raw/master/mod-utils.js
@@ -260,8 +260,14 @@
 		}
 		if (!uWindow.BCMacros || settingsMacro.inaccessible()) {
 			//Create Button
-			let button = ctrlPanel.addButton(...Object.values(options));
-			button.addEventListener("click", () => openSettings());
+			//let button = ctrlPanel.addButton(...Object.values(options));
+			//button.addEventListener("click", () => openSettings());
+
+			// Attach settings to the existing  unused settings button
+			let menu = document.getElementById("menu"),
+				btn = menu.children[4].children[0];
+			btn.removeAttribute("onclick");
+			btn.addEventListener("click", () => openSettings());
 		}
 	});
 
