@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Test
-// @namespace    https://boxcrittersmods.ga/authors/tumblegamer/
+// @namespace    https://bcmc.ga/authors/tumblegamer/
 // @version      n/a
 // @description  Critterguration test
 // @author       TumbleGamer

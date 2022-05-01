@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Critterguration
-// @namespace    https://boxcrittersmods.ga/authors/tumblegamer/
+// @namespace    https://bcmc.ga/authors/tumblegamer/
 // @version      0.3.1.29
 // @icon         https://github.com/tumble1999/critterguration/raw/master/icon.png
 // @author       TumbleGamer
@@ -33,11 +33,11 @@
 		``,
 		`<small style="font-size: 0.8em">
 			Mod Settings powered by
-			<a href="https://boxcrittersmods.ga/projects/critterguration/" target="_blank" rel="noopener noreferrer">
+			<a href="https://bcmc.ga/projects/critterguration/" target="_blank" rel="noopener noreferrer">
 				Critterguration
 			</a>
 			created by
-			<a href="https://boxcrittersmods.ga/authors/tumblegamer/" target="_blank" rel="noopener noreferrer">
+			<a href="https://bcmc.ga/authors/tumblegamer/" target="_blank" rel="noopener noreferrer">
 				TumbleGamer
 			</a>
 		</small>`
