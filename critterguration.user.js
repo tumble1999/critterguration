@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Critterguration
 // @namespace    https://bcmc.ga/authors/tumblegamer/
-// @version      0.3.3.32
+// @version      0.3.4.33
 // @icon         https://github.com/tumble1999/critterguration/raw/master/icon.png
 // @author       TumbleGamer
 // @require      https://github.com/tumble1999/mod-utils/raw/master/mod-utils.js
@@ -48,8 +48,8 @@
 	// Create Tab Bar
 	// <div class="nav nav-pills justify-content-center"></div>
 	let tabContainer = document.createElement("div");
-	tabContainer.classList.add("nav", "nav-pills", "justify-content-center");
-	modal.getHeaderNode().appendChild(tabContainer);
+	tabContainer.classList.add("nav", "nav-pills", "justify-content-center", "mb-3");
+	modal.getBodyNode().appendChild(tabContainer);
 	tabContainer.style.display = "none";
 
 	// Create Content Area
