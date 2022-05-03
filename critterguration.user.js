@@ -1,13 +1,12 @@
 // ==UserScript==
 // @name         Critterguration
 // @namespace    https://bcmc.ga/authors/tumblegamer/
-// @version      0.3.6.35
+// @version      0.3.6.36
 // @icon         https://github.com/tumble1999/critterguration/raw/master/icon.png
 // @author       TumbleGamer
 // @require      https://github.com/tumble1999/mod-utils/raw/master/mod-utils.js
 // @require      https://github.com/SArpnt/ctrl-panel/raw/master/script.user.js
 // @require      https://github.com/tumble1999/modial/raw/master/modial.js
-// @require      https://github.com/boxcrittersmods/bcmacros/raw/master/bcmacro-api.user.js
 // @match        https://boxcritters.com/play/
 // @match        https://boxcritters.com/play/?*
 // @match        https://boxcritters.com/play/#*
