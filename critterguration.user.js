@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Critterguration
 // @namespace    https://bcmc.ga/authors/tumblegamer/
-// @version      0.3.4.33
+// @version      0.3.5.34
 // @icon         https://github.com/tumble1999/critterguration/raw/master/icon.png
 // @author       TumbleGamer
 // @require      https://github.com/tumble1999/mod-utils/raw/master/mod-utils.js
@@ -275,6 +275,7 @@
 		openSettings,
 		registerSettingsMenu,
 		createInputGroup: createInputRow,
-		isOpen: modal.showing
+		modal,
+		isOpen: () => modal.showing()
 	};
 })();
