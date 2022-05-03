@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         Critterguration
 // @namespace    https://bcmc.ga/authors/tumblegamer/
-// @version      0.3.5.34
+// @version      0.3.6.35
 // @icon         https://github.com/tumble1999/critterguration/raw/master/icon.png
 // @author       TumbleGamer
 // @require      https://github.com/tumble1999/mod-utils/raw/master/mod-utils.js
 // @require      https://github.com/SArpnt/ctrl-panel/raw/master/script.user.js
 // @require      https://github.com/tumble1999/modial/raw/master/modial.js
+// @require      https://github.com/boxcrittersmods/bcmacros/raw/master/bcmacro-api.user.js
 // @match        https://boxcritters.com/play/
 // @match        https://boxcritters.com/play/?*
 // @match        https://boxcritters.com/play/#*
@@ -19,12 +20,24 @@
 (function () {
 	"use strict";
 
-	if (typeof Modial == 'undefined') throw `@require https://github.com/tumble1999/modial/raw/master/modial.js`;
-
 	const uWindow = typeof unsafeWindow != 'undefined' ? unsafeWindow : window;
 
 	if (uWindow.Critterguration)
 		return;
+
+	let deps = [
+		{
+			obj: "TumbleMod",
+			text: "// @require      https://github.com/tumble1999/mod-utils/raw/master/mod-utils.js"
+		},
+		{
+			obj: "Modial",
+			text: "// @require      https://github.com/tumble1999/modial/raw/master/modial.js"
+		}
+	];
+	if (deps.map(dep => eval("typeof " + dep.obj)).includes("undefined")) throw `\nATTENTION MOD DEVELOPER:\nPlease add the following to your code:\n${deps.map(dep => {
+		if (eval("typeof " + dep.obj) == "undefined") return dep.text;
+	}).filter(d => !!d).join("\n")}`;
 
 	let modal = new Modial();
 	modal.setWidth("1000px");
@@ -252,8 +265,6 @@
 			// });
 
 			// Attach settiongs to the existing  unused settings button
-			console.log(uWindow.BCMacros);
-
 			setTimeout(() => {
 				BCMacros.macros.find(m => m.name == "misc").setAction(() => openSettings());
 			}, 1000);
