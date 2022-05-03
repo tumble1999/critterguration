@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Critterguration
 // @namespace    https://bcmc.ga/authors/tumblegamer/
-// @version      0.3.2.30
+// @version      0.3.3.32
 // @icon         https://github.com/tumble1999/critterguration/raw/master/icon.png
 // @author       TumbleGamer
 // @require      https://github.com/tumble1999/mod-utils/raw/master/mod-utils.js
@@ -29,7 +29,7 @@
 	let modal = new Modial();
 	modal.setWidth("1000px");
 	modal.setContent(
-		`<span>Mod Settings</span>${Modial.closeButton}`,
+		`<span>Mod Settings</span>`,
 		``,
 		`<small style="font-size: 0.8em">
 			Mod Settings powered by
