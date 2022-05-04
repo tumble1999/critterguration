@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Critterguration
 // @namespace    https://bcmc.ga/authors/tumblegamer/
-// @version      0.3.6.36
+// @version      0.3.7.37
 // @icon         https://github.com/tumble1999/critterguration/raw/master/icon.png
-// @author       TumbleGamer
+// @author       Tumble
 // @require      https://github.com/tumble1999/mod-utils/raw/master/mod-utils.js
 // @require      https://github.com/SArpnt/ctrl-panel/raw/master/script.user.js
 // @require      https://github.com/tumble1999/modial/raw/master/modial.js
@@ -34,9 +34,11 @@
 			text: "// @require      https://github.com/tumble1999/modial/raw/master/modial.js"
 		}
 	];
-	if (deps.map(dep => eval("typeof " + dep.obj)).includes("undefined")) throw `\nATTENTION MOD DEVELOPER:\nPlease add the following to your code:\n${deps.map(dep => {
+	if (deps.map(dep => eval("typeof " + dep.obj)).includes("undefined")) throw "\nATTENTION MOD DEVELOPER:\nPlease add the following to your code:\n" + deps.map(dep => {
 		if (eval("typeof " + dep.obj) == "undefined") return dep.text;
-	}).filter(d => !!d).join("\n")}`;
+	}).filter(d => !!d).join("\n");
+
+
 
 	let modal = new Modial();
 	modal.setWidth("1000px");
@@ -150,33 +152,50 @@
 	};
 
 	function addItemToListGroup(container, name, color = "secondary", description, footer, corner, badge, onclick, active) {
+
+		/*
+		<a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+			<div class="d-flex w-100 justify-content-between">
+				<h5 class="mb-1">List group item heading</h5>
+				<small>3 days ago</small>
+			</div>
+			<p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+			<small>Donec id elit non mi porta.</small>
+		</a>
+		*/
+
 		let listItem = document.createElement("a");
 		container.appendChild(listItem);
 		listItem.href = "#";
 		listItem.onclick = () => onclick();
 		listItem.classList.add("list-group-item", "list-group-item-action", "text-" + color);
 		if (active) listItem.classList.add("list-group-item-" + color);
-		if (name) {
+		if (name || badge || corner) {
 			let headerElm = document.createElement("div");
-			headerElm.classList.add(..."d-flex w-100 justify-content-between".split(" "));
 			listItem.appendChild(headerElm);
-			let nameElm = document.createElement("h5");
-			nameElm.classList.add("md-1", "w-100");
-			nameElm.innerText = name;
-			headerElm.appendChild(nameElm);
-			listItem.nameElm = nameElm;
-			if (badge) {
-				let badgeElm = document.createElement("span");
-				badgeElm.classList.add("badge", "rounded-pill", "bg-" + color);
-				badgeElm.innerText = badge;
-				listItem.badgeElm = badgeElm;
-				nameElm.prepend(badgeElm);
+			headerElm.classList.add("d-flex", "w-100", "justify-content-between");
+			if (badge || name) {
+				let nameElm = document.createElement("h5");
+				nameElm.classList.add("md-1");
+				headerElm.appendChild(nameElm);
+				listItem.nameElm = nameElm;
+				if (name) {
+					nameElm.innerHTML = name;
+				}
+				if (badge) {
+					let badgeElm = document.createElement("span");
+					badgeElm.classList.add("badge", "rounded-pill", "bg-" + color);
+					badgeElm.innerText = badge;
+					listItem.badgeElm = badgeElm;
+					nameElm.prepend(badgeElm);
+				}
+
 			}
 			if (corner) {
 				let cornerElm = document.createElement("small");
-				cornerElm.classList.add("text-muted", "float-right");
-				cornerElm.innerText = corner;
-				nameElm.appendChild(cornerElm);
+				cornerElm.innerHTML = corner;
+				headerElm.appendChild(cornerElm);
+				listItem.cornerElm = cornerElm;
 			}
 		}
 		if (description) {
@@ -188,7 +207,6 @@
 		}
 		if (footer) {
 			let footerElm = document.createElement("small");
-			footerElm.classList.add("text-muted");
 			footerElm.innerText = footer;
 			listItem.footerElm = footerElm;
 			listItem.appendChild(footerElm);
@@ -281,11 +299,16 @@
 		}
 	});
 
-	uWindow.Critterguration = {
+
+	uWindow.Critterguration = new TumbleMod({
+		id: "critterguration", // code-friendly version of name
+		abriv: "BCConfig", // abbreviation for mod.log
+		name: "Critterguration",
+		author: "Tumble",
 		openSettings,
 		registerSettingsMenu,
 		createInputGroup: createInputRow,
 		modal,
 		isOpen: () => modal.showing()
-	};
+	});
 })();
