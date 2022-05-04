@@ -111,7 +111,7 @@
 		activeTab(tabId || tabContainer.querySelector(".active"));
 	}
 
-	function createDropdown(container, name, options, shouldSelect, onchange) {
+	function createDropdown(container, { name, options, shouldSelect, onchange }) {
 		let input = document.createElement("select");
 		input.placeholder = name;
 		input.classList.add("form-select");
@@ -128,12 +128,12 @@
 		return input;
 	}
 
-	function createInput(container, name, type, oninput = _ => 0) {
+	function createInput(container, { name, type, onInput = _ => 0 }) {
 		let input = document.createElement("input");
 		input.placeholder = name;
 		input.classList.add("form-control");
 		input.type = type;
-		input.oninput = () => oninput(input.value, input);
+		input.oninput = () => onInput(input.value, input);
 		container.appendChild(input);
 		return input;
 	}
@@ -151,7 +151,7 @@
 		}
 	};
 
-	function addItemToListGroup(container, name, color = "secondary", description, footer, corner, badge, onclick, active) {
+	function addItemToListGroup(container, { name, color = "secondary", description, footer, corner, badge, onclick, active }) {
 
 		/*
 		<a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
@@ -223,7 +223,7 @@
 			label.innerText = name;
 			listGroup.appendChild(label);
 		}
-		listGroup.addItem = (...p) => addItemToListGroup(listGroup, ...p);
+		listGroup.addItem = (options) => addItemToListGroup(listGroup, options);
 		container.appendChild(listGroup);
 		return listGroup;
 	}

@@ -28,45 +28,56 @@
 	settingContainer.innerText = "Welcome to the test settings page!";
 
 	//returns html elemet representing the input elememt
-	settingContainer.createInput("Yes", "text", (value) => {
-		console.log("You said", value);
+	settingContainer.createInput({
+		name: "Yes", type: "text", onInput: (value) => {
+			console.log("You said", value);
+		}
 	});
+
 
 	//returns html element representing the div
 	let nameGroup = settingContainer.createInputRow("Name");
 
 	//returns html elemet representing the input elememt
-	nameGroup.createInput("FirstName", "text");
-	nameGroup.createInput("Second Name", "text");
+	nameGroup.createInput({ name: "FirstName", type: "text" });
+	nameGroup.createInput({ name: "Second Name", type: "text" });
 
 	//returns html element representing the select elememt
-	settingContainer.createDropdown("Day",
-		[
+	settingContainer.createDropdown({
+		name: "Day",
+		options: [
 			{ value: "0", text: "Monday" },
-			{ value: "1", text: "Teusday" },
+			{ value: "1", text: "Tuesday" },
 			{ value: "2", text: "Wednesday" },
 			{ value: "3", text: "Thursday" },
 			{ value: "4", text: "Friday" },
 			{ value: "5", text: "Saturday" },
 			{ value: "6", text: "Sunday" }
 		],
-		value => value == new Date().getDay(), // Select the current day
-		value => {
+		shouldSelect: value => value == new Date().getDay(), // Select the current day
+		onChange: value => {
 			console.log("The day is", value.text);
-		});
+		}
+	});
 
 	// this one also retunes a html element
 	let testList = settingContainer.createListGroup("Bob");
 
 	//and so do these
-	testList.addItem("Title", "warning", "Description", "Footer", "Corner", "Badge", () => {
-		console.log("This one is the test one");
-	}, true);
-	testList.addItem("Be", "success", "To be", "That is the question", "Or Not", "To", () => {
-		console.log("Shakesphere, Of course.");
+	testList.addItem({
+		name: "Title", color: "warning", description: "Description", footer: "Footer", corner: "Corner", badge: "Badge", onClick: () => {
+			console.log("This one is the test one");
+		}, active: true
 	});
-	testList.addItem("Ok Yay", "danger", "So I've made this a thing now", "Now people can make these", "Woo-Hoo", "🎈", () => {
-		console.log("But now we are here so we can do things with it, many things.");
+	testList.addItem({
+		name: "Be", color: "success", description: "To be", footer: "That is the question", corner: "Or Not", badge: "To", onClick: () => {
+			console.log("Shakesphere, Of course.");
+		}
+	});
+	testList.addItem({
+		name: "Ok Yay", color: "danger", description: "So I've made this a thing now", footer: "Now people can make these", corner: "Woo-Hoo", badge: "🎈", onClick: () => {
+			console.log("But now we are here so we can do things with it, many things.");
+		}
 	});
 
 
