@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Critterguration
 // @namespace    https://bcmc.ga/authors/tumblegamer/
-// @version      0.3.7.37
+// @version      0.3.8.38
 // @icon         https://github.com/tumble1999/critterguration/raw/master/icon.png
 // @author       Tumble
 // @require      https://github.com/tumble1999/mod-utils/raw/master/mod-utils.js
@@ -167,7 +167,7 @@
 		let listItem = document.createElement("a");
 		container.appendChild(listItem);
 		listItem.href = "#";
-		listItem.onclick = () => onclick();
+		if (onclick) listItem.onclick = () => onclick();
 		listItem.classList.add("list-group-item", "list-group-item-action", "text-" + color);
 		if (active) listItem.classList.add("list-group-item-" + color);
 		if (name || badge || corner) {
