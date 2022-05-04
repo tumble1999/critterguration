@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Critterguration
 // @namespace    https://bcmc.ga/authors/tumblegamer/
-// @version      0.3.8.38
+// @version      0.3.9.39
 // @icon         https://github.com/tumble1999/critterguration/raw/master/icon.png
 // @author       Tumble
 // @require      https://github.com/tumble1999/mod-utils/raw/master/mod-utils.js
