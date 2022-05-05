@@ -70,12 +70,25 @@
 		}, active: true
 	});
 	testList.addItem({
-		name: "Be", color: "success", description: "To be", footer: "That is the question", corner: "Or Not", badge: "To", onClick: () => {
+		name: "Be",
+		color: "success",
+		image: "https://boxcritters.com/images/menu/Btn_Menu_Items_A.png",
+		description: "To be",
+		footer: "That is the question",
+		corner: "Or Not",
+		badge: "To",
+		onClick: () => {
 			console.log("Shakesphere, Of course.");
 		}
 	});
 	testList.addItem({
-		name: "Ok Yay", color: "danger", description: "So I've made this a thing now", footer: "Now people can make these", corner: "Woo-Hoo", badge: "🎈", onClick: () => {
+		name: "Ok Yay",
+		color: "danger",
+		description: "So I've made this a thing now",
+		footer: "Now people can make these",
+		corner: "Woo-Hoo",
+		badge: "🎈",
+		onClick: () => {
 			console.log("But now we are here so we can do things with it, many things.");
 		}
 	});

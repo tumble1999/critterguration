@@ -151,7 +151,7 @@
 		}
 	};
 
-	function addItemToListGroup(container, { name, color = "secondary", description, footer, corner, badge, onclick, active }) {
+	function addItemToListGroup(container, { name, color = "secondary", description, image, footer, corner, badge, onClick, active }) {
 
 		/*
 		<a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
@@ -163,16 +163,41 @@
 			<small>Donec id elit non mi porta.</small>
 		</a>
 		*/
+		let listItem, listItemContent;
 
-		let listItem = document.createElement("a");
+		if (onClick) {
+			listItem = document.createElement("a");
+			listItem.href = "#";
+			listItem.onclick = () => onClick();
+		} else {
+			listItem = document.createElement("div");
+		}
 		container.appendChild(listItem);
-		listItem.href = "#";
-		if (onclick) listItem.onclick = () => onclick();
-		listItem.classList.add("list-group-item", "list-group-item-action", "text-" + color);
+		if (image) {
+			listItem.classList.add("d-flex", "align-items-center");
+			let imgContainer = document.createElement("div"),
+				imgElement = new Image();
+			listItem.appendChild(imgContainer);
+			imgContainer.classList.add("flex-shrink-0");
+			imgContainer.appendChild(imgElement);
+			imgElement.src = image;
+			imgElement.height = 100;
+			listItemContent = document.createElement("div");
+			listItem.appendChild(listItemContent);
+			listItemContent.classList.add("flex-grow-1", "ms-3");
+		}
+		else {
+			listItemContent = listItem;
+		}
+		listItem.classList.add("list-group-item", "text-" + color);
+		if (onClick)
+			listItem.classList.add("list-group-item-action");
 		if (active) listItem.classList.add("list-group-item-" + color);
+
+
 		if (name || badge || corner) {
 			let headerElm = document.createElement("div");
-			listItem.appendChild(headerElm);
+			listItemContent.appendChild(headerElm);
 			headerElm.classList.add("d-flex", "w-100", "justify-content-between");
 			if (badge || name) {
 				let nameElm = document.createElement("h5");
@@ -203,13 +228,13 @@
 			descriptionElm.classList.add("mb-1");
 			descriptionElm.innerText = description;
 			listItem.descriptionElm = descriptionElm;
-			listItem.appendChild(descriptionElm);
+			listItemContent.appendChild(descriptionElm);
 		}
 		if (footer) {
 			let footerElm = document.createElement("small");
 			footerElm.innerText = footer;
 			listItem.footerElm = footerElm;
-			listItem.appendChild(footerElm);
+			listItemContent.appendChild(footerElm);
 		}
 		return listItem;
 	}
