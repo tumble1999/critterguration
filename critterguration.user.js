@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Critterguration
 // @namespace    https://bcmc.ga/authors/tumblegamer/
-// @version      0.3.10.40
+// @version      0.3.11.41
 // @icon         https://github.com/tumble1999/critterguration/raw/master/icon.png
 // @author       Tumble
 // @require      https://github.com/tumble1999/mod-utils/raw/master/mod-utils.js
@@ -143,9 +143,9 @@
 	};
 	function setupCreationFunctions(container, norow) {
 		for (let func in creationFunctions) {
-			container[func] = (...p) => {
+			container[func] = (p) => {
 				let row;
-				if (norow) row = container.createInputRow(p[0]);
+				if (norow) row = container.createInputRow(p.name);
 				return creationFunctions[func](norow ? row : container, ...p);
 			};
 		}
