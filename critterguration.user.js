@@ -128,15 +128,31 @@
 		return input;
 	}
 
-	function createInput(container, { name, type, onInput = _ => 0 }) {
+	function createInput(container, { name, type, value, onInput = _ => 0 }) {
 		let input = document.createElement("input");
 		input.placeholder = name;
-		input.classList.add("form-control");
 		input.type = type;
-		input.oninput = () => onInput(input.value, input);
-		container.appendChild(input);
+		if (type == "checkbox") {
+			input.checked = value;
+			input.oninput = () => onInput(input.checked, input);
+
+			let inputContainer = document.createElement("span");
+			inputContainer.classList.add("form-control");
+			//inputContainer.classList.add("input-group-text");
+			inputContainer.appendChild(input);
+
+			container.appendChild(inputContainer);
+		} else {
+			input.value = value;
+			input.oninput = () => onInput(input.value, input);
+			input.classList.add("form-control");
+
+			container.appendChild(input);
+		}
 		return input;
 	}
+
+
 	let creationFunctions = {
 		createInput,
 		createDropdown,
